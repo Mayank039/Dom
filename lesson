@@ -1,0 +1,11 @@
+var item = document.getElementsByClassName('list-group-item');
+console.log(item);
+console.log(item[1]);
+item[1].textContent = "Hello";
+item[1].style.fontweight="bold";
+item[1].style.backgroundcolor = "green";
+
+//changing whole item list background color
+for(var i=0; i<item.length; i++){
+    item[i].style.backgroundcolor = "#f4f4f4";
+}
