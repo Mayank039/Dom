@@ -1,11 +1,11 @@
-var item = document.getElementsByClassName('list-group-item');
-console.log(item);
-console.log(item[1]);
-item[1].textContent = "Hello";
-item[1].style.fontweight="bold";
-item[1].style.backgroundcolor = "green";
+var li = document.getElementsByTagName('list-group-item');
+console.log(li);
+console.log(li[1]);
+li[1].textContent = "Hello";
+li[1].style.fontweight="bold";
+li[1].style.backgroundcolor = "green";
 
 //changing whole item list background color
-for(var i=0; i<item.length; i++){
-    item[i].style.backgroundcolor = "#f4f4f4";
+for(var i=0; i<li.length; i++){
+    li[i].style.backgroundcolor = "#f4f4f4";
 }
