@@ -1,0 +1,18 @@
+//filter items
+function filtermName(e){
+    //convert to lowerCase
+    var text = e.target.value.toLowerCase();
+    //get list
+    var itemss = itemlist.getElementsByTagName('li');
+    //conv to array
+    Array.from(itemss).forEach(function(itemss){
+        var itemName = itemss.firstChild.textContent;
+        if(itemName.toLowerCase().indexOf(text)!=-1){
+            itemss.style.display = 'block';
+        }
+
+        else{
+            itemss.style.display = 'none;'
+        }
+})
+}
