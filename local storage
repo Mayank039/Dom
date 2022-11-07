@@ -1,0 +1,13 @@
+ let mtObj = {
+            name : 'MAyank',
+            age : 23
+        };
+
+        let myObjse = JSON.stringify (mtObj);
+        console.log(myObjse);
+
+        localStorage.setItem('mtobj',myObjse);
+        console.log(localStorage)
+
+        let myobjdes = JSON.parse(localStorage.getItem('myobj'));
+        console.log(myobjdes) 
