@@ -1,0 +1,23 @@
+   <ul id="listofUsers"></ul>
+    <script>
+        function saveToLocalStorage(event){
+            event.preventDefault();
+            const name = event.target.username.value;
+            const email = event.target.username.value;
+            const phonenumber = event.target.username.value;
+            
+            const obj={
+                name,
+                email,
+                phonenumber
+            }
+
+            localStorage.setItem(obj.email,JSON.stringify(obj))
+            showNewUserOnScreen(obj);
+        }
+        function showNewUserOnScreen(user){
+            const parentnode = document.getElementById('listofUsers');
+            const childHTML = `<li> ${user.name} - {user.email} </li>`
+            parentnode.innerHTML = parentnode.innerHTML + childHTML
+        }
+    </script>
