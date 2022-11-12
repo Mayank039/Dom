@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="scripit.js"></script>
+</head>
+<body>
+    <form onsubmit="saveToLocalStorage(event)">
+        <label>ExpenseAmount</label>
+        <input id="ExpenseAmount" type="tel" name="ExpenseAmount">
+        <label>Choose Descripition</label>
+        <input id="Descripition" type="text" name="Descripition">
+        <label>Category</label>
+        
+        <input id="Category" type="text" name="Category">
+        <button>ADD Expense</button>
+    </form>
+    <ul id="list"></ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function saveToLocalStorage(event){
+    event.preventDefault();
+    const amount = event.target.ExpenseAmount.value;
+    const decp = event.target.Descripition.value;
+    const catge = event.target.Category.value;
+    // localStorage.setItem('amount',amount);
+    // localStorage.setItem('decp ',decp);
+    // localStorage.setItem('catge',catge);
+    const obj = {
+        amount,
+        decp,
+        catge
+        
+    }
+    localStorage.setItem(obj.decp,JSON.stringify(obj))
+    showNewExpOnScreen(obj);
+}
+
+function showNewExpOnScreen(EXPEN){
+    const parentNode = document.getElementById('list');
+    const childHTML = `<li id=${EXPEN.decp}> ${EXPEN.amount} - ${EXPEN.decp} - ${EXPEN.catge} 
+                        <button onclick=deletExpen('${EXPEN.decp}')>Delete</button> 
+                        <button onclick=editFun('${EXPEN.decp}','${EXPEN.amount}','${EXPEN.catge}')>Edit</button>
+                        </li>`;
+    parentNode.innerHTML = parentNode.innerHTML +  childHTML;
+}
+//delete from local storage
+function deletExpen(decp){
+    console.log(decp)
+    localStorage.removeItem(decp);
+    removeFromScreen(decp);
+
+}
+//delete from screen
+function removeFromScreen(decp){
+    const parentNode = document.getElementById('list');
+    const childNodedel = document.getElementById(decp);
+    parentNode.removeChild(childNodedel);
+}
+
+//edit expen
+
+function editFun(decp,amount,catge){
+    document.getElementById('Descripition').value = decp;
+    document.getElementById('ExpenseAmount').value = amount;
+    document.getElementById('Category').value = catge;
+
+    deletExpen(decp);
+
+
+}
